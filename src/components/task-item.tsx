@@ -51,15 +51,15 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
 
   return (
     <div className={cn(
-        "flex items-center gap-3 p-3 rounded-lg border transition-colors duration-150 ease-in-out bg-card",
-        task.completed ? 'bg-card/50 border-border/50' : 'hover:bg-secondary/80'
+        "flex items-center gap-3 p-3 rounded-lg border border-border transition-colors duration-150 ease-in-out bg-card", // Use theme border
+        task.completed ? 'bg-card/50 border-border/30 opacity-70' : 'hover:bg-secondary/80' // Adjust completed and hover styles
     )}>
       <Checkbox
         id={`task-${task.id}`}
         checked={task.completed}
         onCheckedChange={() => onToggleComplete(task.id)}
         aria-labelledby={`task-desc-${task.id}`}
-        className="shrink-0"
+        className="shrink-0 data-[state=checked]:bg-primary data-[state=checked]:border-primary" // Ensure checkbox uses primary color
       />
       <div className="flex-grow grid gap-1">
         {isEditing ? (
@@ -68,11 +68,11 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleSaveEdit(); if (e.key === 'Escape') handleCancelEdit(); }}
-              className="h-8 text-sm flex-grow"
+              className="h-8 text-sm flex-grow focus:ring-accent" // Use accent for focus
               autoFocus
             />
-            <Button size="sm" variant="ghost" onClick={handleSaveEdit}>保存</Button> {/* Updated button text */}
-            <Button size="sm" variant="outline" onClick={handleCancelEdit}>取消</Button> {/* Updated button text */}
+            <Button size="sm" variant="default" onClick={handleSaveEdit}>保存</Button> {/* Use default (primary) variant */}
+            <Button size="sm" variant="outline" onClick={handleCancelEdit}>取消</Button>
           </div>
         ) : (
           <label
@@ -80,7 +80,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
             id={`task-desc-${task.id}`}
             className={cn(
               "text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-              task.completed ? 'line-through text-muted-foreground' : 'text-foreground'
+              task.completed ? 'line-through text-muted-foreground/70' : 'text-foreground' // Adjust completed text style
             )}
           >
             {task.description}
@@ -92,7 +92,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
         <>
          <Select value={task.priority} onValueChange={handlePriorityChange} disabled={task.completed}>
             <SelectTrigger className={cn(
-                "w-[110px] h-8 text-xs shrink-0 focus:ring-accent",
+                "w-[110px] h-8 text-xs shrink-0 focus:ring-accent", // Use accent focus ring
                 task.completed && "opacity-50 cursor-not-allowed"
                 )} aria-label="更改优先级"> {/* Added aria-label */}
                 <div className="flex items-center gap-1">
@@ -123,7 +123,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
            <Button
              variant="ghost"
              size="icon"
-             className="h-8 w-8 text-muted-foreground hover:text-accent-foreground shrink-0"
+             className="h-8 w-8 text-muted-foreground hover:text-accent-foreground shrink-0" // Use accent-foreground on hover
              onClick={handleEdit}
              aria-label="编辑任务" // Updated aria-label
            >
@@ -134,7 +134,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0"
+            className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0" // Keep destructive for delete hover
             onClick={() => onDelete(task.id)}
             aria-label="删除任务" // Updated aria-label
           >

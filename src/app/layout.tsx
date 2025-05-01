@@ -16,7 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning> {/* Changed lang to zh-CN */}
+    // Set default to dark mode, apply light theme via 'dark' class if needed
+    <html lang="zh-CN">
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         Geist.variable,

@@ -5,7 +5,7 @@ import { TaskList } from '@/components/task-list';
 import { useTasks } from '@/hooks/useTasks';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ListTodo, CheckCircle, Palette } from 'lucide-react';
+import { ListTodo, CheckCircle, Code } from 'lucide-react'; // Changed Palette to Code
 
 export default function Home() {
   const {
@@ -22,7 +22,7 @@ export default function Home() {
     <div className="container mx-auto max-w-2xl p-4 md:p-8 min-h-screen">
       <header className="mb-6 text-center">
         <div className="flex items-center justify-center gap-2 mb-2">
-           <Palette className="h-8 w-8 text-accent" />
+           <Code className="h-8 w-8 text-primary" /> {/* Changed icon and color */}
           <h1 className="text-3xl font-bold text-foreground">优先流</h1> {/* Updated title */}
         </div>
         <p className="text-muted-foreground">按优先级组织您的任务。</p> {/* Updated description */}

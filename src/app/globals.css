@@ -8,85 +8,101 @@ body {
 
 @layer base {
   :root {
-    /* Neutral Gray Theme */
-    --background: 220 10% 96%; /* Light Gray */
-    --foreground: 220 10% 10%; /* Dark Gray */
-    --card: 220 10% 100%; /* White */
-    --card-foreground: 220 10% 10%; /* Dark Gray */
-    --popover: 220 10% 100%; /* White */
-    --popover-foreground: 220 10% 10%; /* Dark Gray */
-    --primary: 220 10% 15%; /* Darker Gray */
-    --primary-foreground: 220 10% 98%; /* Near White */
-    --secondary: 220 10% 90%; /* Medium Gray */
-    --secondary-foreground: 220 10% 10%; /* Dark Gray */
-    --muted: 220 10% 90%; /* Medium Gray */
-    --muted-foreground: 220 10% 45%; /* Gray */
-    --accent: 180 100% 25%; /* Teal (#008080) */
-    --accent-foreground: 180 100% 95%; /* Light Teal/White */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 10% 85%; /* Lighter Gray Border */
-    --input: 220 10% 85%; /* Lighter Gray Input */
-    --ring: 180 100% 30%; /* Slightly darker Teal for ring */
+    /* Cyberpunk Dark Theme (Default) */
+    --background: 240 30% 5%; /* Very Dark Blue/Purple */
+    --foreground: 240 10% 90%; /* Light Gray/Off-White */
 
-    /* Chart Colors (Can keep default or adjust) */
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --card: 240 30% 10%; /* Slightly Lighter Dark Blue */
+    --card-foreground: 240 10% 90%; /* Light Gray/Off-White */
+
+    --popover: 240 30% 8%; /* Darker Popover */
+    --popover-foreground: 240 10% 90%; /* Light Gray/Off-White */
+
+    --primary: 320 100% 70%; /* Bright Neon Pink - Primary Action */
+    --primary-foreground: 240 30% 5%; /* Dark Background for contrast */
+
+    --secondary: 240 20% 15%; /* Medium Dark Blue/Gray */
+    --secondary-foreground: 240 10% 85%; /* Lighter Gray */
+
+    --muted: 240 20% 20%; /* Darker Muted Blue/Gray */
+    --muted-foreground: 240 10% 60%; /* Medium Gray */
+
+    --accent: 180 100% 50%; /* Bright Neon Cyan - Accent */
+    --accent-foreground: 240 30% 5%; /* Dark Background for contrast */
+
+    --destructive: 0 100% 55%; /* Neon Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+
+    --border: 240 20% 25%; /* Subtle Dark Border */
+    --input: 240 20% 25%; /* Input Background */
+    --ring: 320 100% 60%; /* Neon Pink Ring */
+
+    /* Chart Colors (Cyberpunk Neons) */
+    --chart-1: 320 100% 60%; /* Pink */
+    --chart-2: 180 100% 50%; /* Cyan */
+    --chart-3: 60 100% 50%; /* Yellow */
+    --chart-4: 280 100% 60%; /* Purple */
+    --chart-5: 120 100% 50%; /* Green */
 
     --radius: 0.5rem;
 
-    /* Sidebar Colors (Using main theme colors) */
-    --sidebar-background: 220 10% 98%;
-    --sidebar-foreground: 220 10% 20%;
-    --sidebar-primary: 180 100% 25%; /* Teal */
-    --sidebar-primary-foreground: 180 100% 95%;
-    --sidebar-accent: 220 10% 90%;
-    --sidebar-accent-foreground: 220 10% 10%;
-    --sidebar-border: 220 10% 85%;
-    --sidebar-ring: 180 100% 30%;
+    /* Sidebar Colors (Dark Theme) */
+    --sidebar-background: 240 30% 8%;
+    --sidebar-foreground: 240 10% 80%;
+    --sidebar-primary: 320 100% 65%; /* Neon Pink */
+    --sidebar-primary-foreground: 240 30% 5%;
+    --sidebar-accent: 240 20% 20%;
+    --sidebar-accent-foreground: 180 100% 70%; /* Cyan for accent text */
+    --sidebar-border: 240 20% 25%;
+    --sidebar-ring: 320 100% 60%;
   }
 
   .dark {
-    /* Dark Neutral Gray Theme */
-    --background: 220 10% 10%; /* Dark Gray */
-    --foreground: 220 10% 95%; /* Light Gray */
-    --card: 220 10% 15%; /* Slightly Lighter Dark Gray */
-    --card-foreground: 220 10% 95%; /* Light Gray */
-    --popover: 220 10% 15%; /* Slightly Lighter Dark Gray */
-    --popover-foreground: 220 10% 95%; /* Light Gray */
-    --primary: 220 10% 90%; /* Light Gray */
-    --primary-foreground: 220 10% 10%; /* Dark Gray */
-    --secondary: 220 10% 25%; /* Medium Dark Gray */
-    --secondary-foreground: 220 10% 95%; /* Light Gray */
-    --muted: 220 10% 25%; /* Medium Dark Gray */
-    --muted-foreground: 220 10% 65%; /* Gray */
-    --accent: 180 100% 35%; /* Brighter Teal (#00AFAF) */
-    --accent-foreground: 220 10% 5%; /* Near Black */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 10% 30%; /* Darker Gray Border */
-    --input: 220 10% 30%; /* Darker Gray Input */
-    --ring: 180 100% 40%; /* Brighter Teal for ring */
+     /* Cyberpunk Light Theme (Using .dark selector for structure) */
+    --background: 240 10% 98%; /* Very Light Gray */
+    --foreground: 240 30% 10%; /* Dark Blue/Black */
 
-    /* Chart Colors (Adjust for dark mode) */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --card: 240 10% 100%; /* White */
+    --card-foreground: 240 30% 10%; /* Dark Blue/Black */
 
-    /* Sidebar Colors (Using dark theme colors) */
-    --sidebar-background: 220 10% 12%;
-    --sidebar-foreground: 220 10% 90%;
-    --sidebar-primary: 180 100% 35%; /* Teal */
-    --sidebar-primary-foreground: 220 10% 5%;
-    --sidebar-accent: 220 10% 25%;
-    --sidebar-accent-foreground: 220 10% 95%;
-    --sidebar-border: 220 10% 30%;
-    --sidebar-ring: 180 100% 40%;
+    --popover: 240 10% 100%; /* White */
+    --popover-foreground: 240 30% 10%; /* Dark Blue/Black */
+
+    --primary: 320 90% 50%; /* Strong Pink - Primary Action */
+    --primary-foreground: 320 100% 98%; /* Very Light Pink/White */
+
+    --secondary: 240 10% 92%; /* Light Gray */
+    --secondary-foreground: 240 30% 20%; /* Darker Blue */
+
+    --muted: 240 10% 90%; /* Slightly Darker Light Gray */
+    --muted-foreground: 240 10% 45%; /* Medium Gray */
+
+    --accent: 180 90% 45%; /* Strong Cyan - Accent */
+    --accent-foreground: 180 100% 98%; /* Very Light Cyan/White */
+
+    --destructive: 0 80% 50%; /* Strong Red */
+    --destructive-foreground: 0 0% 98%; /* White */
+
+    --border: 240 10% 85%; /* Light Gray Border */
+    --input: 240 10% 90%; /* Light Gray Input */
+    --ring: 320 90% 55%; /* Pink Ring */
+
+    /* Chart Colors (Adjusted for Light Mode) */
+    --chart-1: 320 80% 55%;
+    --chart-2: 180 80% 40%;
+    --chart-3: 50 90% 50%;
+    --chart-4: 280 80% 55%;
+    --chart-5: 120 80% 40%;
+
+    /* Sidebar Colors (Light Theme) */
+    --sidebar-background: 240 10% 96%;
+    --sidebar-foreground: 240 30% 15%;
+    --sidebar-primary: 320 90% 50%; /* Pink */
+    --sidebar-primary-foreground: 320 100% 98%;
+    --sidebar-accent: 240 10% 90%;
+    --sidebar-accent-foreground: 180 90% 40%; /* Cyan */
+    --sidebar-border: 240 10% 85%;
+    --sidebar-ring: 320 90% 55%;
   }
 }
 

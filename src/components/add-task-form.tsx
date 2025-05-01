@@ -31,17 +31,17 @@ export function AddTaskForm({ onAddTask }: AddTaskFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4 bg-card rounded-lg shadow-sm border">
+    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4 bg-card rounded-lg shadow-sm border border-border"> {/* Ensure border uses theme */}
       <Input
         type="text"
         placeholder="添加一个新任务..." // Updated placeholder
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="flex-grow focus:ring-accent"
+        className="flex-grow focus:ring-accent" // Use accent color for focus ring
         aria-label="新任务描述" // Updated aria-label
       />
       <Select value={priority} onValueChange={(value: Priority) => setPriority(value)}>
-        <SelectTrigger className="w-[120px] focus:ring-accent" aria-label="选择任务优先级"> {/* Updated aria-label */}
+        <SelectTrigger className="w-[120px] focus:ring-accent" aria-label="选择任务优先级"> {/* Updated aria-label and focus ring */}
            <div className="flex items-center gap-1">
               <PriorityIcon priority={priority} className="h-4 w-4"/>
               <SelectValue placeholder="优先级" /> {/* Updated placeholder */}
@@ -65,7 +65,7 @@ export function AddTaskForm({ onAddTask }: AddTaskFormProps) {
             </SelectItem>
         </SelectContent>
       </Select>
-      <Button type="submit" size="icon" aria-label="添加任务"> {/* Updated aria-label */}
+      <Button type="submit" size="icon" aria-label="添加任务" variant="default"> {/* Explicitly use default (primary) variant */}
         <Plus className="h-4 w-4" />
       </Button>
     </form>
