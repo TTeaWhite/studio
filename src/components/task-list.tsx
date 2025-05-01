@@ -1,13 +1,13 @@
 import type { Task } from '@/types/task';
 import { TaskItem } from '@/components/task-item';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Skeleton } from '@/components/ui/skeleton'; // Import Skeleton
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface TaskListProps {
   tasks: Task[];
   title: string;
   emptyMessage: string;
-  isLoading: boolean; // Add isLoading prop
+  isLoading: boolean;
   onToggleComplete: (id: string) => void;
   onDelete: (id: string) => void;
   onUpdate: (id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>) => void;
@@ -17,7 +17,7 @@ export function TaskList({
   tasks,
   title,
   emptyMessage,
-  isLoading, // Destructure isLoading
+  isLoading,
   onToggleComplete,
   onDelete,
   onUpdate,

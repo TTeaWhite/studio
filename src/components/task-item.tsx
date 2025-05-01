@@ -71,8 +71,8 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
               className="h-8 text-sm flex-grow"
               autoFocus
             />
-            <Button size="sm" variant="ghost" onClick={handleSaveEdit}>Save</Button>
-            <Button size="sm" variant="outline" onClick={handleCancelEdit}>Cancel</Button>
+            <Button size="sm" variant="ghost" onClick={handleSaveEdit}>保存</Button> {/* Updated button text */}
+            <Button size="sm" variant="outline" onClick={handleCancelEdit}>取消</Button> {/* Updated button text */}
           </div>
         ) : (
           <label
@@ -94,26 +94,26 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
             <SelectTrigger className={cn(
                 "w-[110px] h-8 text-xs shrink-0 focus:ring-accent",
                 task.completed && "opacity-50 cursor-not-allowed"
-                )}>
+                )} aria-label="更改优先级"> {/* Added aria-label */}
                 <div className="flex items-center gap-1">
                     <PriorityIcon priority={task.priority} className="h-3 w-3" />
-                    <SelectValue placeholder="Priority" />
+                    <SelectValue placeholder="优先级" /> {/* Updated placeholder */}
                 </div>
             </SelectTrigger>
             <SelectContent>
                 <SelectItem value="high">
                     <div className="flex items-center gap-2">
-                        <PriorityIcon priority="high" /> High
+                        <PriorityIcon priority="high" /> 高 {/* Updated label */}
                     </div>
                 </SelectItem>
                 <SelectItem value="medium">
                      <div className="flex items-center gap-2">
-                        <PriorityIcon priority="medium" /> Medium
+                        <PriorityIcon priority="medium" /> 中 {/* Updated label */}
                     </div>
                 </SelectItem>
                 <SelectItem value="low">
                      <div className="flex items-center gap-2">
-                        <PriorityIcon priority="low" /> Low
+                        <PriorityIcon priority="low" /> 低 {/* Updated label */}
                     </div>
                 </SelectItem>
             </SelectContent>
@@ -125,7 +125,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
              size="icon"
              className="h-8 w-8 text-muted-foreground hover:text-accent-foreground shrink-0"
              onClick={handleEdit}
-             aria-label="Edit task"
+             aria-label="编辑任务" // Updated aria-label
            >
              <Edit className="h-4 w-4" />
            </Button>
@@ -136,7 +136,7 @@ export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskIte
             size="icon"
             className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0"
             onClick={() => onDelete(task.id)}
-            aria-label="Delete task"
+            aria-label="删除任务" // Updated aria-label
           >
             <Trash2 className="h-4 w-4" />
           </Button>

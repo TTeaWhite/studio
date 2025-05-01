@@ -5,5 +5,5 @@ export interface Task {
   description: string;
   priority: Priority;
   completed: boolean;
-  createdAt: number; // Store creation time for sorting
+  createdAt: number; // 存储创建时间用于排序
 }

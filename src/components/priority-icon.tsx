@@ -8,9 +8,9 @@ interface PriorityIconProps {
 }
 
 const priorityMap: Record<Priority, { icon: React.ElementType; color: string; label: string }> = {
-  high: { icon: Flame, color: 'text-red-500', label: 'High Priority' }, // Using Tailwind color for consistency
-  medium: { icon: ChevronsUp, color: 'text-orange-500', label: 'Medium Priority' }, // Using Tailwind color for consistency
-  low: { icon: ChevronUp, color: 'text-green-500', label: 'Low Priority' }, // Using Tailwind color for consistency
+  high: { icon: Flame, color: 'text-red-500', label: '高优先级' }, // Updated label
+  medium: { icon: ChevronsUp, color: 'text-orange-500', label: '中优先级' }, // Updated label
+  low: { icon: ChevronUp, color: 'text-green-500', label: '低优先级' }, // Updated label
 };
 
 export function PriorityIcon({ priority, className }: PriorityIconProps) {

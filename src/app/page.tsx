@@ -5,7 +5,7 @@ import { TaskList } from '@/components/task-list';
 import { useTasks } from '@/hooks/useTasks';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ListTodo, CheckCircle, Palette } from 'lucide-react'; // Import Palette
+import { ListTodo, CheckCircle, Palette } from 'lucide-react';
 
 export default function Home() {
   const {
@@ -15,17 +15,17 @@ export default function Home() {
     toggleTaskCompletion,
     deleteTask,
     updateTask,
-    isLoading, // Get loading state
+    isLoading,
   } = useTasks();
 
   return (
     <div className="container mx-auto max-w-2xl p-4 md:p-8 min-h-screen">
       <header className="mb-6 text-center">
         <div className="flex items-center justify-center gap-2 mb-2">
-           <Palette className="h-8 w-8 text-accent" /> {/* Use Palette icon */}
-          <h1 className="text-3xl font-bold text-foreground">PriorityFlow</h1>
+           <Palette className="h-8 w-8 text-accent" />
+          <h1 className="text-3xl font-bold text-foreground">优先流</h1> {/* Updated title */}
         </div>
-        <p className="text-muted-foreground">Organize your tasks by priority.</p>
+        <p className="text-muted-foreground">按优先级组织您的任务。</p> {/* Updated description */}
       </header>
 
       <AddTaskForm onAddTask={addTask} />
@@ -33,18 +33,18 @@ export default function Home() {
       <Tabs defaultValue="active" className="mt-6">
         <TabsList className="grid w-full grid-cols-2 mb-4">
           <TabsTrigger value="active">
-            <ListTodo className="mr-2 h-4 w-4" /> Active ({activeTasks.length})
+            <ListTodo className="mr-2 h-4 w-4" /> 进行中 ({activeTasks.length}) {/* Updated tab title */}
           </TabsTrigger>
           <TabsTrigger value="completed">
-            <CheckCircle className="mr-2 h-4 w-4" /> Completed ({completedTasks.length})
+            <CheckCircle className="mr-2 h-4 w-4" /> 已完成 ({completedTasks.length}) {/* Updated tab title */}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="active">
            <TaskList
             tasks={activeTasks}
-            title="Active Tasks"
-            emptyMessage="No active tasks. Add one above!"
-            isLoading={isLoading} // Pass loading state
+            title="进行中的任务" // Updated list title
+            emptyMessage="没有进行中的任务。在上方添加一个！" // Updated empty message
+            isLoading={isLoading}
             onToggleComplete={toggleTaskCompletion}
             onDelete={deleteTask}
             onUpdate={updateTask}
@@ -53,9 +53,9 @@ export default function Home() {
         <TabsContent value="completed">
            <TaskList
             tasks={completedTasks}
-            title="Completed Tasks"
-            emptyMessage="No tasks completed yet."
-            isLoading={isLoading} // Pass loading state
+            title="已完成的任务" // Updated list title
+            emptyMessage="还没有已完成的任务。" // Updated empty message
+            isLoading={isLoading}
             onToggleComplete={toggleTaskCompletion}
             onDelete={deleteTask}
             onUpdate={updateTask}

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist } from '@/app/(fonts)/geist/font/sans'; // Corrected import path and name
+import { Geist } from '@/app/(fonts)/geist/font/sans'; // Corrected import path
 import { Geist_Mono } from '@/app/(fonts)/geist/font/mono'; // Corrected import path
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'PriorityFlow',
-  description: 'Manage your tasks with priorities.',
+  title: '优先流', // Updated title to Chinese
+  description: '通过优先级管理您的任务。', // Updated description to Chinese
 };
 
 export default function RootLayout({
@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning> {/* Changed lang to zh-CN */}
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
-        Geist.variable, // Corrected variable name
+        Geist.variable,
         Geist_Mono.variable
       )}>
         {children}
