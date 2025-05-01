@@ -1,0 +1,147 @@
+"use client";
+
+import type { Task, Priority } from '@/types/task';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Button } from '@/components/ui/button';
+import { Trash2, Edit } from 'lucide-react';
+import { PriorityIcon } from '@/components/priority-icon';
+import { cn } from '@/lib/utils';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from '@/components/ui/input';
+import React, { useState } from 'react';
+
+
+interface TaskItemProps {
+  task: Task;
+  onToggleComplete: (id: string) => void;
+  onDelete: (id: string) => void;
+  onUpdate: (id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>) => void;
+}
+
+export function TaskItem({ task, onToggleComplete, onDelete, onUpdate }: TaskItemProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(task.description);
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setEditText(task.description); // Reset edit text
+  };
+
+  const handleSaveEdit = () => {
+    if (editText.trim() !== task.description && editText.trim() !== '') {
+      onUpdate(task.id, { description: editText.trim() });
+    }
+    setIsEditing(false);
+  };
+
+  const handlePriorityChange = (newPriority: Priority) => {
+     onUpdate(task.id, { priority: newPriority });
+  };
+
+
+  return (
+    <div className={cn(
+        "flex items-center gap-3 p-3 rounded-lg border transition-colors duration-150 ease-in-out bg-card",
+        task.completed ? 'bg-card/50 border-border/50' : 'hover:bg-secondary/80'
+    )}>
+      <Checkbox
+        id={`task-${task.id}`}
+        checked={task.completed}
+        onCheckedChange={() => onToggleComplete(task.id)}
+        aria-labelledby={`task-desc-${task.id}`}
+        className="shrink-0"
+      />
+      <div className="flex-grow grid gap-1">
+        {isEditing ? (
+           <div className="flex gap-2 items-center">
+            <Input
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleSaveEdit(); if (e.key === 'Escape') handleCancelEdit(); }}
+              className="h-8 text-sm flex-grow"
+              autoFocus
+            />
+            <Button size="sm" variant="ghost" onClick={handleSaveEdit}>Save</Button>
+            <Button size="sm" variant="outline" onClick={handleCancelEdit}>Cancel</Button>
+          </div>
+        ) : (
+          <label
+            htmlFor={`task-${task.id}`}
+            id={`task-desc-${task.id}`}
+            className={cn(
+              "text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              task.completed ? 'line-through text-muted-foreground' : 'text-foreground'
+            )}
+          >
+            {task.description}
+          </label>
+        )}
+
+      </div>
+      {!isEditing && (
+        <>
+         <Select value={task.priority} onValueChange={handlePriorityChange} disabled={task.completed}>
+            <SelectTrigger className={cn(
+                "w-[110px] h-8 text-xs shrink-0 focus:ring-accent",
+                task.completed && "opacity-50 cursor-not-allowed"
+                )}>
+                <div className="flex items-center gap-1">
+                    <PriorityIcon priority={task.priority} className="h-3 w-3" />
+                    <SelectValue placeholder="Priority" />
+                </div>
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="high">
+                    <div className="flex items-center gap-2">
+                        <PriorityIcon priority="high" /> High
+                    </div>
+                </SelectItem>
+                <SelectItem value="medium">
+                     <div className="flex items-center gap-2">
+                        <PriorityIcon priority="medium" /> Medium
+                    </div>
+                </SelectItem>
+                <SelectItem value="low">
+                     <div className="flex items-center gap-2">
+                        <PriorityIcon priority="low" /> Low
+                    </div>
+                </SelectItem>
+            </SelectContent>
+        </Select>
+
+        {!task.completed && (
+           <Button
+             variant="ghost"
+             size="icon"
+             className="h-8 w-8 text-muted-foreground hover:text-accent-foreground shrink-0"
+             onClick={handleEdit}
+             aria-label="Edit task"
+           >
+             <Edit className="h-4 w-4" />
+           </Button>
+         )}
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0"
+            onClick={() => onDelete(task.id)}
+            aria-label="Delete task"
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </>
+      )}
+    </div>
+  );
+}
