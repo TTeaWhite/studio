@@ -25,7 +25,8 @@ export function TaskList({
   return (
     <div className="space-y-3">
       <h2 className="text-lg font-semibold text-foreground">{title}</h2>
-      <ScrollArea className="h-[calc(100vh-280px)] pr-4"> {/* Adjust height as needed */}
+      {/* Reduced height slightly to account for global header */}
+      <ScrollArea className="h-[calc(100vh-320px)] pr-4">
         <div className="space-y-2">
           {isLoading ? (
             // Show skeletons while loading
